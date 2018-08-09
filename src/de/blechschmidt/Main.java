@@ -3,8 +3,15 @@ package de.blechschmidt;
 public class Main {
 
     public static void main(String[] args) {
-        Tamagotchi tmg = new Tamagotchi(3, 50, 10);
-        tmg.makeHappy();
-        tmg.print();
+        Main main = new Main();
+
+        main.buyATamagotchi();
+    }
+    
+    void buyATamagotchi() {
+        Tamagotchi mizutamatchi = new Tamagotchi(0, 0, 0);
+        mizutamatchi.print();
+        mizutamatchi.makeHappy();
+        mizutamatchi.print();
     }
 }
