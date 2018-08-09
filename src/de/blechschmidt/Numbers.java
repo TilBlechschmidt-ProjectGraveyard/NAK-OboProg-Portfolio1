@@ -34,7 +34,7 @@ public class Numbers {
     /**
      * Calculates the roman number representation of a positive whole number larger than 0 and smaller than 4000.
      * @param arabicNumber The number to convert.
-     * @return The arabic representation of the given number.
+     * @return The roman representation of the given number.
      */
     public String roman(int arabicNumber) {
         StringBuilder romanNumber = new StringBuilder();
@@ -61,7 +61,7 @@ public class Numbers {
             }
 
             // If the symbol fits and the next symbol does not fit 9 times add it.
-            // IOW: If we have a 9 do not add a V although it would fit because
+            // IOW: If we have a 9 do not add a V although it would fit because we want to add IX later.
             else if (romanNumberIndex == romanSymbolValues.length - 1 || arabicNumber / romanSymbolValues[romanNumberIndex + 1] != 9) {
                 // Add the correct number of arguments.
                 for (int i = 0; i < currentRomanSymbolValueFitCount; i++) {
