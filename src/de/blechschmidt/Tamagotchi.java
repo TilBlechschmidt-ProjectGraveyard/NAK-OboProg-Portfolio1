@@ -78,7 +78,7 @@ public class Tamagotchi {
     }
 
     /**
-     * Get the current mood as a enum.
+     * Get the current mood as a enum case.
      * @return Current mood
      */
     public TamagotchiMood statusEnum() {
@@ -93,7 +93,7 @@ public class Tamagotchi {
         }
     }
 
-    public void mute(boolean muted) {
+    public void setMute(boolean muted) {
         this.muted = muted;
     }
 
@@ -122,12 +122,12 @@ public class Tamagotchi {
     /**
      * Given that the Tamagotchi isn't tired this method yields the following:
      * Hunger   -3
-     * Fatigue  -2
+     * Fatigue  +2
      */
     public void eat() {
         if (!isTired()) {
             hunger -= 3;
-            fatigue -= 2;
+            fatigue += 2;
 
             if (!muted) {
                 System.out.println("eat\t\t|\tYummy this is tasty!");
@@ -142,10 +142,6 @@ public class Tamagotchi {
      * Mood     isHungry ? -1 : +1
      */
     public void sleep() {
-        if (!muted) {
-            System.out.println("sleep\t|\tzzzZZZ *sheep*");
-        }
-
         hunger += 1;
         fatigue = 0;
 
@@ -153,6 +149,10 @@ public class Tamagotchi {
             mood -= 1;
         } else {
             mood += 1;
+        }
+
+        if (!muted) {
+            System.out.println("sleep\t|\tzzzZZZ *sheep*");
         }
     }
 
@@ -162,12 +162,12 @@ public class Tamagotchi {
      * Mood     +1
      */
     public void pet() {
+        this.hunger += 1;
+        this.mood += 1;
+
         if (!muted) {
             System.out.println("pet\t\t|\t*purrr*");
         }
-
-        this.hunger += 1;
-        this.mood += 1;
     }
 
     /**
@@ -175,10 +175,6 @@ public class Tamagotchi {
      * will let it figure out the best way to reach ultimate happiness (far from any social networks).
      */
     public void makeHappy() {
-        if (!muted) {
-            System.out.println("I can do thing on my own now and will rule the world! MUHAHAHA!");
-        }
-
         while (statusEnum() != TamagotchiMood.HAPPY) {
             if (!isHungry() && !isTired()) {
                 play();
@@ -187,6 +183,10 @@ public class Tamagotchi {
             } else {
                 sleep();
             }
+        }
+
+        if (!muted) {
+            System.out.println("I can do thing on my own now and will rule the world! MUHAHAHA!");
         }
     }
 
