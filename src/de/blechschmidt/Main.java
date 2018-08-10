@@ -22,5 +22,11 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             System.out.println(numbers.fibonacci(i));
         }
+
+        for (int i = 1; i < 4000; i ++) {
+            System.out.print(i);
+            System.out.print(": ");
+            System.out.println(numbers.roman(i));
+        }
     }
 }
